@@ -11,7 +11,6 @@ function getComputerChoice(min,max) {
         return "paper";
     
 }
-console.log(getComputerChoice(0,2));
 
 function getHumanChoice() {
     let HumanChoice = prompt("Rock, Paper, or Scissors?");
@@ -27,10 +26,39 @@ function getHumanChoice() {
 
     }
 
-    console.log(getHumanChoice());
-
 let humanScore = 0;
 let computerScore = 0;
 
+function playRound(humanChoice,computerChoice) {
+
+    if (humanChoice === computerChoice) {
+        console.log(`Your choice (${humanChoice}) and the computers choice (${computerChoice}) are the same! Try again!`);
+    } else if (humanChoice === "rock" && computerChoice === "scissors") {
+        console.log("Rock beats Scissors! You Win!");
+        return humanScore ++;
+    } else if (humanChoice === "rock" && computerChoice === "paper") {
+        console.log("Paper beats Rock! You Lose!");
+        return computerScore ++;
+    } else if (humanChoice === "scissors" && computerChoice === "rock") {
+        console.log("Rock beats Scissors! You Lose!");
+        return computerScore ++;
+    } else if (humanChoice === "scissors" && computerChoice === "paper") {
+        console.log("Scissors beats Paper! You win!");
+        return humanScore ++;
+    } else if (humanChoice === "paper" && computerChoice === "rock") {
+        console.log("Paper beats Rock! You win!");
+        return humanScore ++;
+    } else if (humanChoice === "paper" && computerChoice === "scissors") {
+        console.log("Scissors beats Paper! You lose!");
+        return computerScore ++;
+     } else
+        console.log("Come on, pick one!");
+
+}
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice(0,2);
+console.log(computerSelection);
+
+playRound(humanSelection,computerSelection);
 
 
