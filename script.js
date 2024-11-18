@@ -1,4 +1,6 @@
 function getComputerChoice(min, max) {
+    if (isGameOver) return computerSelection;
+
     const minCeiled = Math.ceil(min);
     const maxFloored = Math.floor(max);
     const ComputerNumber = Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
@@ -87,13 +89,24 @@ buttons.forEach((button) => {
 
         if (humanScore === 5 || computerScore === 5) {
             isGameOver = true;
+            if (!document.querySelector("#gameResult")) {
             if (humanScore === 5) {
-                alert("Congratulations! You won the game!");
-            } else 
-                alert("Game Over! The computer won the game!");
+                const humanWins = document.createElement("p");
+                humanWins.setAttribute("id", "gameResult");
+                humanWins.setAttribute("style", "color:blue; background:grey; margin: 20px; padding: 20px; text-align:center; font-size: 24px");
+                humanWins.textContent = "Congratulations! You Won!"
+                document.body.appendChild(humanWins);
+                // alert("Congratulations! You won the game!");
+            } else if (computerScore === 5) {
+                const computerWins = document.createElement("p");
+                computerWins.setAttribute("id","gameResult");
+                computerWins.setAttribute("style", "color:blue; background:grey; margin: 20px; padding: 20px; text-align:center; font-size: 24px");
+                computerWins.textContent = "Sorry! Computer Wins.";
+                document.body.appendChild(computerWins);
+                // alert("Game Over! The computer won the game!");
             }
 
-    });
+}}});
 });
 
 
